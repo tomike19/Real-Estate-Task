@@ -15,6 +15,17 @@
         width: 90%;
         margin: auto;
     }
+
+    &__button {
+        border: none !important;
+    }
+    .input-group {
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+    }
+    .search-input {
+        border: none !important;
+    }
 }
 
 .ms-n5 {
