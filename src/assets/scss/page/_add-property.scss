@@ -1,4 +1,9 @@
 .add-property {
+    &__header {
+      font-size: 1.5rem;
+  color: #0c1e7f;
+  padding-top: 2rem;
+    }
     &__footer {
         display: flex;
         justify-content: center;

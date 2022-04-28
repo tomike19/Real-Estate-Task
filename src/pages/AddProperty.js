@@ -14,10 +14,10 @@ const AddProperty = () => {
           <div className="row">
             <div className="col-md-6 col-lg-6 col-12">
               <Input
-                label="Enter your email"
-                placeholder="Enter your email"
-                type="email"
-                name="email"
+                label="Property Address"
+                placeholder="Enter your address"
+                type="text"
+                name="text"
               />
             </div>
             <div className="col-md-6 col-lg-6 col-12">

@@ -10,6 +10,7 @@
     color: $input-color;
     text-align: left;
     margin-bottom: 11px;
+    margin-top:20px;
 }
 .input {
     height: 57px;
@@ -34,9 +35,7 @@
         color: $input-color;
     }
 }
-.requestInput {
-    height: 45px;
-}
+
 .password-input-wrap {
     position: relative;
     height: 57px;

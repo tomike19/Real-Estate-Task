@@ -9,7 +9,9 @@
 
 .navbar-logo {
     height: 30px;
+    color: #0c1e7f;
 }
+
 .navigation {
     display: none;
     width: 75%;
@@ -43,7 +45,7 @@
     text-decoration: none;
     // border-right: 1px solid $dark-blue;
     line-height: 1.69rem;
-    color: dark-blue;
+   color: #0c1e7f;
     @include media-breakpoint-down(lg) {
         border-right: none;
     }

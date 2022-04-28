@@ -18,7 +18,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg default-layout__inner ">
         <div className="container">
           <Link to={RouteLinks.addproperty} className="navbar-brand">
-            <h1>HOME CITY</h1>
+            <h1 className="navbar-logo">HOME CITY</h1>
           </Link>
           <i
             className="navbar-toggler bi bi-list"
