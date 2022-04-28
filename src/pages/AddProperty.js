@@ -1,13 +1,14 @@
-import React from 'react';
+import React from 'react'
+import NavDefaultLayout from '../layouts/NavDefaultLayout'
 
 const AddProperty = () => {
   return (
     <>
-    <div>
-      <h1>hello</h1>
-    </div>
+      <NavDefaultLayout>
+        <div></div>
+      </NavDefaultLayout>
     </>
-  );
+  )
 }
 
 export default AddProperty
