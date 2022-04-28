@@ -1,4 +1,3 @@
-import { useState } from 'react'
 
 export const Input = (props) => {
   const { error, label, name, placeholder, ...inputProps } = props

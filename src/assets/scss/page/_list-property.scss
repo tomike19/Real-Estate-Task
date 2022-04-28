@@ -1,0 +1,22 @@
+.list-property {
+    &__header {
+        background-image: url("../../images//background.jpg");
+        height: 300px;
+        background-size: fill;
+
+        h1 {
+            color: #0c1e7f;
+            padding-top: 90px;
+            font-size: 3rem;
+        }
+    }
+    &__property-form {
+        grid-column-gap: 2rem;
+        width: 90%;
+        margin: auto;
+    }
+}
+
+.ms-n5 {
+    margin-left: -40px;
+}

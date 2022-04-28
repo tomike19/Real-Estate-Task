@@ -9,7 +9,7 @@ const Navbar = () => {
     },
     {
       title: 'List Property',
-      path: '#',
+      path: 'RouteLinks.listproperty',
     },
   ]
 
