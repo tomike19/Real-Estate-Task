@@ -2,7 +2,9 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 //Pages
-
+@import "./assets/scss/page/add-property";
+@import "./assets/scss/page/list-property";
+@import "./assets/scss/page/show-property";
 
 // Layouts
 @import "./assets/scss/layouts/nav-layout"
