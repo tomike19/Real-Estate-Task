@@ -17,47 +17,71 @@ const AddProperty = () => {
                 label="Property Address"
                 placeholder="Enter your address"
                 type="text"
+                name="Property-address"
+              />
+            </div>
+            <div className="col-md-6 col-lg-6 col-12">
+              <Input
+                label="Property Type"
+                placeholder="Enter your text"
+                type="text"
+                name="property-type"
+              />
+            </div>
+            <div className="col-md-6 col-lg-6 col-12">
+              <Input
+                label="Number of Bathrooms"
+                placeholder="Enter your text"
+                type="text"
+                name="Number of Bathrooms"
+              />
+            </div>
+            <div className="col-md-6 col-lg-6 col-12">
+              <Input
+                label="Enter your text"
+                placeholder="Enter your text"
+                type="text"
                 name="text"
               />
             </div>
             <div className="col-md-6 col-lg-6 col-12">
               <Input
-                label="Enter your email"
-                placeholder="Enter your email"
-                type="email"
-                name="email"
+                label="Number of Toilets"
+                placeholder="Enter your text"
+                type="text"
+                name="Number of Toilets"
               />
             </div>
             <div className="col-md-6 col-lg-6 col-12">
               <Input
-                label="Enter your email"
-                placeholder="Enter your email"
-                type="email"
-                name="email"
+                label="Enter your text"
+                placeholder="Enter your text"
+                type="text"
+                name="text"
               />
             </div>
             <div className="col-md-6 col-lg-6 col-12">
               <Input
-                label="Enter your email"
-                placeholder="Enter your email"
-                type="email"
-                name="email"
+                label="Property Owner"
+                placeholder="Enter your Name"
+                type="text"
+                name="Property Owner"
               />
             </div>
             <div className="col-md-6 col-lg-6 col-12">
               <Input
-                label="Enter your email"
-                placeholder="Enter your email"
-                type="email"
-                name="email"
+                label="Valid From"
+                id="valid to"
+                name="valid to"
+                placeholder="dd-mm-yyyy"
               />
             </div>
             <div className="col-md-6 col-lg-6 col-12">
               <Input
-                label="Enter your email"
-                placeholder="Enter your email"
-                type="email"
-                name="email"
+                label="Valid From"
+                id="valid to"
+                name="valid to"
+                placeholder="dd-mm-yyyy"
               />
             </div>
           </div>
