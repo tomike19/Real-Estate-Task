@@ -12,7 +12,7 @@ export const PropertyConditions = ({
   propertybathrooms,
 }) => {
   return (
-    <div>
+    <div className="single-page-property__property-items">
       <div class="property-details d-flex">
         <i class="bi bi-geo-alt"></i>
         <p>{propertygarage}</p>
@@ -162,22 +162,15 @@ const ShowListProperty = () => {
 
           <div className="single-page-property__description">
             <div class="single-page-property__description-details">
-              <h6>Description</h6>
-              <p>
-                Haven ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et lore magna iqua. Ut enim
-                ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                ut quipx ea codo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolo.Haven ipsum
-                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et lore magna iqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut quipx
-                ea codo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse cillum dolo
-              </p>
               <div class="row single-property-section">
-                <div class="col-lg-6 py-5 single-property-condition">
+                <div class="col-lg-12 py-5 single-property-condition">
                   <h6>Conditions</h6>
+                  <p>
+                    Haven ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et lore magna iqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut quipx ea codo consequat.
+                  </p>
                   <PropertyConditions
                     propertygarage="Garage 2"
                     propertyfeet="550ft"

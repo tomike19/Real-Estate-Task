@@ -16,6 +16,11 @@
         margin: 40px auto;
     }
 
+    &__property-items {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .icon {
         font-size: 30px;
     }

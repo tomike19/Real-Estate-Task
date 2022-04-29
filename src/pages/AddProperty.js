@@ -17,7 +17,7 @@ const AddProperty = () => {
                 label="Property Address"
                 placeholder="Enter your address"
                 type="text"
-                name="Property-address"
+                name="Property address"
               />
             </div>
             <div className="col-md-6 col-lg-6 col-12">
@@ -25,7 +25,7 @@ const AddProperty = () => {
                 <label className="input-label">Property type</label>
                 <select
                   class="form-select input"
-                  name="property-type"
+                  name="property type"
                   type="text"
                   aria-label="Default                                                      select example"
                 >
@@ -40,7 +40,7 @@ const AddProperty = () => {
                 <label className="input-label">Number of Bathrooms</label>
                 <select
                   class="form-select input"
-                  name="property-type"
+                  name="number of bathrooms"
                   type="text"
                   aria-label="Default                                                      select example"
                 >
@@ -57,7 +57,7 @@ const AddProperty = () => {
                 <label className="input-label">Number of Kitchens</label>
                 <select
                   class="form-select input"
-                  name="property-type"
+                  name="number of kitchens"
                   type="text"
                   aria-label="Default                                                      select example"
                 >
@@ -74,7 +74,7 @@ const AddProperty = () => {
                 <label className="input-label">Number of Toilets</label>
                 <select
                   class="form-select input"
-                  name="property-type"
+                  name="number of toilets"
                   type="text"
                   aria-label="Default                                                      select example"
                 >
@@ -91,7 +91,7 @@ const AddProperty = () => {
                 <label className="input-label">Number of SittingRooms</label>
                 <select
                   class="form-select input"
-                  name="property-type"
+                  name="number of sittingRooms"
                   type="text"
                   aria-label="Default                                                      select example"
                 >
@@ -108,23 +108,25 @@ const AddProperty = () => {
                 label="Property Owner"
                 placeholder="Enter your Name"
                 type="text"
-                name="Property Owner"
+                name="property owner"
               />
             </div>
             <div className="col-md-6 col-lg-6 col-12">
               <Input
                 label="Valid From"
                 id="valid to"
-                name="valid to"
+                name="valid from"
                 placeholder="dd-mm-yyyy"
+                type="date"
               />
             </div>
             <div className="col-md-6 col-lg-6 col-12">
               <Input
-                label="Valid From"
+                label="Valid To"
                 id="valid to"
                 name="valid to"
                 placeholder="dd-mm-yyyy"
+                type="date"
               />
             </div>
             <div class="col-lg-12 col-12 mt-5">
