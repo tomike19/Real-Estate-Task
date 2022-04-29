@@ -4,18 +4,39 @@ import SingleKitchen from '../assets/images/singlekitchen.jpg'
 import SingleBedroom from '../assets/images/singlebedroom.jpg'
 import SingleBathroom from '../assets/images/heroimage.jpg'
 
-
-
-export const ShowSinglePage=({propertygarage,
+export const PropertyConditions = ({
+  propertygarage,
   propertybedroom,
   propertyfeet,
   propertykitchen,
-  propertybathrooms
+  propertybathrooms,
 }) => {
   return (
-    <h1></h1>
+    <div>
+      <div class="property-details d-flex">
+        <i class="bi bi-geo-alt"></i>
+        <p>{propertygarage}</p>
+      </div>
+      <div class="property-details d-flex">
+        <i class="bi bi-geo-alt"></i>
+        <p>{propertybedroom}</p>
+      </div>
+      <div class="property-details d-flex">
+        <i class="bi bi-building"></i>
+        <p>{propertyfeet}</p>
+      </div>
+      <div class="property-details d-flex">
+        <i class="bi bi-hospital"></i>
+        <p>{propertykitchen}</p>
+      </div>
+      <div class="property-details d-flex">
+        <i class="bi bi-door-open"></i>
+        <p>{propertybathrooms}</p>
+      </div>
+    </div>
   )
 }
+
 const ShowListProperty = () => {
   return (
     <>
@@ -97,6 +118,31 @@ const ShowListProperty = () => {
           <div className="single-page-property__description">
             <div class="single-page-property__description-details">
               <h6>Description</h6>
+              <p>
+                Haven ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et lore magna iqua. Ut enim
+                ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut quipx ea codo consequat. Duis aute irure dolor in
+                reprehenderit in voluptate velit esse cillum dolo.Haven ipsum
+                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et lore magna iqua. Ut enim ad minim
+                veniam, quis nostrud exercitation ullamco laboris nisi ut quipx
+                ea codo consequat. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolo
+              </p>
+              <div class="row single-property-section">
+                <div class="col-lg-6 py-5 single-property-condition">
+                  <h6>Conditions</h6>
+                  <PropertyConditions
+                    propertygarage="Garage 2"
+                    propertyfeet="550ft"
+                    propertybedroom="3 bedrooms"
+                    propertykitchen="4 Kitchens"
+                    propertybathrooms="5 bathrooms"
+                  />
+                </div>
+              
+              </div>
             </div>
           </div>
         </div>

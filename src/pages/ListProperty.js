@@ -5,7 +5,7 @@ export const ListProperty = ({
   propertytitle,
   propertylocation,
   propertybedroom,
-  propertyfeet,
+  propertytoilet,
 }) => {
   return (
     <div className="list-property__properties">
@@ -28,7 +28,7 @@ export const ListProperty = ({
             </p>
             <p>
               <i class="bi bi-bookmark-plus"></i>
-              {propertyfeet}
+              {propertytoilet}
             </p>
             <button type="button" class="list-property__viewMore">
               View More
@@ -97,26 +97,26 @@ const ListPropertyPage = () => {
                     image="/images/property3.jpg"
                     propertytitle="Friuli-Venezia Giulia"
                     propertylocation=" 568 E 1st Ave,Miami"
-                    propertybedroom="6"
-                    propertyfeet="550ft"
+                    propertybedroom="Bedroom"
+                    propertytoilet="Toilet"
                   />
                 </div>
                 <div className="col-lg-4">
                   <ListProperty
                     image="/images/property3.jpg"
                     propertytitle="Friuli-Venezia Giulia"
-                    propertylocation=" 568 E 1st Ave,Miami"
-                    propertybedroom="6"
-                    propertyfeet="550ft"
+                    propertylocation=" 5Bedrrom8 E 1st Ave,Miami"
+                    propertybedroom="Kitchen"
+                    propertytoilet="Sittingroom"
                   />
                 </div>
                 <div className="col-lg-4">
                   <ListProperty
                     image="/images/property3.jpg"
                     propertytitle="Friuli-Venezia Giulia"
-                    propertylocation=" 568 E 1st Ave,Miami"
-                    propertybedroom="6"
-                    propertyfeet="550ft"
+                    propertylocation=" 5Bedrrom8 E 1st Ave,Miami"
+                    propertybedroom="Bedroom"
+                    propertytoilet="Toilet"
                   />
                 </div>
               </div>
