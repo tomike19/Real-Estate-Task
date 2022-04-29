@@ -72,7 +72,6 @@ const ListPropertyPage = () => {
               </div>
               <div className="col-md-6 col-lg-6 col-12 mt-5">
                 <div className="input-wrap d-flex flex-column filter-select">
-                  {/* <label className="input-label">Property type</label> */}
                   <select
                     class="form-select input"
                     name="property-type"
@@ -81,7 +80,7 @@ const ListPropertyPage = () => {
                   >
                     <option selected>Filtered by</option>
                     <option>Bathrooms</option>
-                    <option>Kitchens</option>
+                    <option>Bedrooms</option>
                     <option>Owners</option>
                   </select>
                 </div>

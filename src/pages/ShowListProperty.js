@@ -10,6 +10,9 @@ export const PropertyConditions = ({
   propertyfeet,
   propertykitchen,
   propertybathrooms,
+  propertyowner,
+  validFrom,
+  validTo,
 }) => {
   return (
     <div className="single-page-property__property-items">
@@ -32,6 +35,18 @@ export const PropertyConditions = ({
       <div class="property-details d-flex">
         <i class="bi bi-door-open"></i>
         <p>{propertybathrooms}</p>
+      </div>
+       <div class="property-details d-flex">
+        <i class="bi bi-door-open"></i>
+        <p>{propertyowner}</p>
+      </div>
+      <div class="property-details d-flex">
+        <i class="bi bi-door-open"></i>
+        <p>{validFrom}</p>
+      </div>
+        <div class="property-details d-flex">
+        <i class="bi bi-hospital"></i>
+        <p>{validTo}</p>
       </div>
     </div>
   )
@@ -173,11 +188,14 @@ const ShowListProperty = () => {
                     laboris nisi ut quipx ea codo consequat.
                   </p>
                   <PropertyConditions
-                    propertygarage="Garage 2"
+                    propertygarage=" Lagos"
                     propertyfeet="5 sittingRooms"
                     propertybedroom="3 bedrooms"
                     propertykitchen="4 Kitchens"
                     propertybathrooms="5 bathrooms"
+                    propertyowner="TOMIKE"
+                    validFrom="20/10/20"
+                    validTo="20/10/20"
                   />
                 </div>
               </div>
