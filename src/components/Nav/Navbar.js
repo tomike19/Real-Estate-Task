@@ -5,11 +5,11 @@ const Navbar = () => {
   const NavData = [
     {
       title: 'Add Property',
-      path: '#',
+      path: '/',
     },
     {
       title: 'List Property',
-      path: 'RouteLinks.listproperty',
+      path: '/listProperty',
     },
   ]
 

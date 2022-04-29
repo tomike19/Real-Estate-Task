@@ -119,6 +119,24 @@ const ListPropertyPage = () => {
                     propertytoilet="Toilet"
                   />
                 </div>
+                <div className="col-lg-4 mt-5">
+                  <ListProperty
+                    image="/images/property3.jpg"
+                    propertytitle="Friuli-Venezia Giulia"
+                    propertylocation=" 5Bedrrom8 E 1st Ave,Miami"
+                    propertybedroom="Kitchen"
+                    propertytoilet="Sittingroom"
+                  />
+                </div>
+                <div className="col-lg-4 mt-5">
+                  <ListProperty
+                    image="/images/property3.jpg"
+                    propertytitle="Friuli-Venezia Giulia"
+                    propertylocation=" 5Bedrrom8 E 1st Ave,Miami"
+                    propertybedroom="Bedroom"
+                    propertytoilet="Toilet"
+                  />
+                </div>
               </div>
             </div>
           </div>

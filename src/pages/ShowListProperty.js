@@ -37,6 +37,23 @@ export const PropertyConditions = ({
   )
 }
 
+export const PropertyDetails = ({ detailstitle, detailstext }) => {
+  return (
+    <div className="single-page-property__propertyCard">
+      <div className="media block-6 services py-4 d-block text-center">
+        <div>
+          <div className="d-flex justify-content-center">
+            <div className="icon"></div>
+          </div>
+        </div>
+        <div className="media-body p-2 mt-2">
+          <h3>{detailstitle}</h3>
+          <p>{detailstext}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
 const ShowListProperty = () => {
   return (
     <>
@@ -115,6 +132,21 @@ const ShowListProperty = () => {
               <span class="visually-hidden">Next</span>
             </button>
           </div>
+          <div className="row d-flex">
+            <div className="col-md-3">
+              <PropertyDetails detailstitle="hi" detailstext="hello" />
+            </div>
+            <div className="col-md-3">
+              <PropertyDetails detailstitle="hi" detailstext="hello" />
+            </div>
+            <div className="col-md-3">
+              <PropertyDetails detailstitle="hi" detailstext="hello" />
+            </div>
+            <div className="col-md-3">
+              <PropertyDetails detailstitle="hi" detailstext="hello" />
+            </div>
+          </div>
+
           <div className="single-page-property__description">
             <div class="single-page-property__description-details">
               <h6>Description</h6>
@@ -141,7 +173,6 @@ const ShowListProperty = () => {
                     propertybathrooms="5 bathrooms"
                   />
                 </div>
-              
               </div>
             </div>
           </div>

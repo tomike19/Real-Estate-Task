@@ -11,10 +11,17 @@
             }
         }
     }
+    &__propertyCard {
+        width: 90%;
+        margin: auto;
+    }
     .carousel-image {
         object-fit: fill;
     }
     .carousel-inner {
-        height: 85vh;
+        height: 45vh;
+    }
+    .services {
+        background: #f8f9fa;
     }
 }
