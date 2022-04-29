@@ -1,4 +1,3 @@
-import React from 'react'
 import NavDefaultLayout from '../layouts/NavDefaultLayout'
 
 export const ListProperty = ({
@@ -99,7 +98,7 @@ const ListPropertyPage = () => {
                     propertytitle="Friuli-Venezia Giulia"
                     propertylocation=" 568 E 1st Ave,Miami"
                     propertybedroom="6"
-                    propertyfeet="550"
+                    propertyfeet="550ft"
                   />
                 </div>
                 <div className="col-lg-4">
@@ -108,7 +107,7 @@ const ListPropertyPage = () => {
                     propertytitle="Friuli-Venezia Giulia"
                     propertylocation=" 568 E 1st Ave,Miami"
                     propertybedroom="6"
-                    propertyfeet="550"
+                    propertyfeet="550ft"
                   />
                 </div>
                 <div className="col-lg-4">
@@ -117,7 +116,7 @@ const ListPropertyPage = () => {
                     propertytitle="Friuli-Venezia Giulia"
                     propertylocation=" 568 E 1st Ave,Miami"
                     propertybedroom="6"
-                    propertyfeet="550"
+                    propertyfeet="550ft"
                   />
                 </div>
               </div>
