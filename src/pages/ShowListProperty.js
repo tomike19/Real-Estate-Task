@@ -40,14 +40,15 @@ export const PropertyConditions = ({
 export const PropertyDetails = ({ detailstitle, detailstext }) => {
   return (
     <div className="single-page-property__propertyCard">
-      <div className="media block-6 services py-4 d-block text-center">
+      <div className="media block-6 services py-2 d-block text-center">
         <div>
           <div className="d-flex justify-content-center">
             <div className="icon"></div>
           </div>
         </div>
         <div className="media-body p-2 mt-2">
-          <h3>{detailstitle}</h3>
+          <i class="bi bi-geo-alt icon"></i>
+          <h5>{detailstitle}</h5>
           <p>{detailstext}</p>
         </div>
       </div>
@@ -134,16 +135,28 @@ const ShowListProperty = () => {
           </div>
           <div className="row d-flex">
             <div className="col-md-3">
-              <PropertyDetails detailstitle="hi" detailstext="hello" />
+              <PropertyDetails
+                detailstitle="Find Places Anywhere In The World"
+                detailstext="A small river named Duden flows by their place and supplies."
+              />
             </div>
             <div className="col-md-3">
-              <PropertyDetails detailstitle="hi" detailstext="hello" />
+              <PropertyDetails
+                detailstitle="We Have Agents With Experience"
+                detailstext="A small river named Duden flows by their place and supplies."
+              />
             </div>
             <div className="col-md-3">
-              <PropertyDetails detailstitle="hi" detailstext="hello" />
+              <PropertyDetails
+                detailstitle="Buy & Rent Modern Properties"
+                detailstext="A small river named Duden flows by their place and supplies."
+              />
             </div>
             <div className="col-md-3">
-              <PropertyDetails detailstitle="hi" detailstext="hello" />
+              <PropertyDetails
+                detailstitle="Making Money"
+                detailstext="A small river named Duden flows by their place and supplies."
+              />
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 .single-page-property {
     &__description {
         width: 90%;
-        margin-top: 6rem;
+        // margin-top: 2rem;
         padding-left: 3rem;
         &-details {
             h6 {
@@ -13,13 +13,17 @@
     }
     &__propertyCard {
         width: 90%;
-        margin: auto;
+        margin: 40px auto;
+    }
+
+    .icon {
+        font-size: 30px;
     }
     .carousel-image {
         object-fit: fill;
     }
     .carousel-inner {
-        height: 45vh;
+        height: 65vh;
     }
     .services {
         background: #f8f9fa;
