@@ -4,6 +4,18 @@ import SingleKitchen from '../assets/images/singlekitchen.jpg'
 import SingleBedroom from '../assets/images/singlebedroom.jpg'
 import SingleBathroom from '../assets/images/heroimage.jpg'
 
+
+
+export const ShowSinglePage=({propertygarage,
+  propertybedroom,
+  propertyfeet,
+  propertykitchen,
+  propertybathrooms
+}) => {
+  return (
+    <h1></h1>
+  )
+}
 const ShowListProperty = () => {
   return (
     <>
@@ -83,20 +95,8 @@ const ShowListProperty = () => {
             </button>
           </div>
           <div className="single-page-property__description">
-            <div class="single-page-property__details">
+            <div class="single-page-property__description-details">
               <h6>Description</h6>
-              <p>
-                Haven ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et lore magna iqua. Ut enim
-                ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                ut quipx ea codo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolo.Haven ipsum
-                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et lore magna iqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut quipx
-                ea codo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse cillum dolo
-              </p>
             </div>
           </div>
         </div>

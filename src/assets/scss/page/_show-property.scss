@@ -1,4 +1,16 @@
 .single-page-property {
+    &__description {
+        width: 90%;
+        margin-top: 6rem;
+        padding-left: 3rem;
+        &-details {
+            h6 {
+                font-size: 30px;
+                color: #0c1e7f;
+                margin-bottom: 1rem;
+            }
+        }
+    }
     .carousel-image {
         object-fit: fill;
     }
