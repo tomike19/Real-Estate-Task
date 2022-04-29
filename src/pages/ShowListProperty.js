@@ -165,7 +165,8 @@ const ShowListProperty = () => {
               <div class="row single-property-section">
                 <div class="col-lg-12 py-5 single-property-condition">
                   <h6>Conditions</h6>
-                  <p>
+                  <h4>Name of the Property</h4>
+                  <p className=''>
                     Haven ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et lore magna iqua.
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -173,7 +174,7 @@ const ShowListProperty = () => {
                   </p>
                   <PropertyConditions
                     propertygarage="Garage 2"
-                    propertyfeet="550ft"
+                    propertyfeet="5 sittingRooms"
                     propertybedroom="3 bedrooms"
                     propertykitchen="4 Kitchens"
                     propertybathrooms="5 bathrooms"
