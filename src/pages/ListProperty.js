@@ -1,6 +1,45 @@
 import React from 'react'
 import NavDefaultLayout from '../layouts/NavDefaultLayout'
-import { Input } from '../components/input/Input'
+
+export const ListProperty = ({
+  image,
+  propertytitle,
+  propertylocation,
+  propertybedroom,
+  propertyfeet,
+}) => {
+  return (
+    <div className="list-property__properties">
+      <div className="card">
+        <img src={image} alt="card-image" />
+        <div className="card-body">
+          <h6>{propertytitle}</h6>
+          <div class="property-details d-flex">
+            <i class="bi bi-geo-alt"></i>
+            <p>{propertylocation}</p>
+          </div>
+          <div></div>
+          <div
+            class="property-details-image d-flex
+                justify-content-between"
+          >
+            <p>
+              <i class="bi bi-arrow-down-circle"></i>
+              {propertybedroom}
+            </p>
+            <p>
+              <i class="bi bi-bookmark-plus"></i>
+              {propertyfeet}
+            </p>
+            <button type="button" class="list-property__viewMore">
+              View More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const ListPropertyPage = () => {
   return (
@@ -46,6 +85,40 @@ const ListPropertyPage = () => {
                     <option>Kitchens</option>
                     <option>Owners</option>
                   </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="list-property__properties">
+            <h1>FEATURED PROPERTY</h1>
+            <div className="list-property__properties-details">
+              <div className="row">
+                <div className="col-lg-4">
+                  <ListProperty
+                    image="/images/property3.jpg"
+                    propertytitle="Friuli-Venezia Giulia"
+                    propertylocation=" 568 E 1st Ave,Miami"
+                    propertybedroom="6"
+                    propertyfeet="550"
+                  />
+                </div>
+                <div className="col-lg-4">
+                  <ListProperty
+                    image="/images/property3.jpg"
+                    propertytitle="Friuli-Venezia Giulia"
+                    propertylocation=" 568 E 1st Ave,Miami"
+                    propertybedroom="6"
+                    propertyfeet="550"
+                  />
+                </div>
+                <div className="col-lg-4">
+                  <ListProperty
+                    image="/images/property3.jpg"
+                    propertytitle="Friuli-Venezia Giulia"
+                    propertylocation=" 568 E 1st Ave,Miami"
+                    propertybedroom="6"
+                    propertyfeet="550"
+                  />
                 </div>
               </div>
             </div>
