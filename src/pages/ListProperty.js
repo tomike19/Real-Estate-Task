@@ -3,6 +3,7 @@ import NavDefaultLayout from '../layouts/NavDefaultLayout'
 import { useProperties } from '../hooks/use-properties'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { BtnSmall } from './../components/button/button'
 
 export const ListProperty = ({
   image,
@@ -39,15 +40,11 @@ export const ListProperty = ({
             </p>
           </div>
           <Link to={`/${propertyId}`}>
-            <button type="button" className="list-property__viewMore ml-5">
-              View More
-            </button>
+            <BtnSmall label="View More" type="submit" />
           </Link>
 
           <Link to={`/?edit=${propertyId}`}>
-            <button type="button" className="list-property__viewMore">
-              Update
-            </button>
+            <BtnSmall label="Update" type="submit" />
           </Link>
         </div>
       </div>
