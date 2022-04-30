@@ -14,6 +14,7 @@
     &__propertyCard {
         width: 90%;
         margin: 40px auto;
+          background: #f8f9fa;
     }
 
     &__property-items {
@@ -29,11 +30,8 @@
     .icon {
         font-size: 30px;
     }
-    .carousel-image {
-        object-fit: fill;
-    }
     .carousel-inner {
-        height: 65vh;
+        height: 75vh;
     }
     .services {
         background: #f8f9fa;

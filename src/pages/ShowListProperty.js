@@ -1,8 +1,6 @@
-import React from "react";
-import NavDefaultLayout from "../layouts/NavDefaultLayout";
-
-import { useParams } from "react-router";
-import { useProperty } from "../hooks/use-property";
+import NavDefaultLayout from '../layouts/NavDefaultLayout'
+import { useParams } from 'react-router'
+import { useProperty } from '../hooks/use-property'
 
 export const PropertyConditions = ({
   propertygarage,
@@ -13,29 +11,25 @@ export const PropertyConditions = ({
 }) => {
   return (
     <div className="single-page-property__property-items">
-      <div class="property-details d-flex">
-        <i class="bi bi-geo-alt"></i>
-        <p>{propertygarage}</p>
-      </div>
-      <div class="property-details d-flex">
-        <i class="bi bi-geo-alt"></i>
+      <div className="property-details d-flex">
+        <i className="bi bi-geo-alt"></i>
         <p>{propertybedroom}</p>
       </div>
-      <div class="property-details d-flex">
-        <i class="bi bi-building"></i>
+      <div className="property-details d-flex">
+        <i className="bi bi-building"></i>
         <p>{propertyfeet}</p>
       </div>
-      <div class="property-details d-flex">
-        <i class="bi bi-hospital"></i>
+      <div className="property-details d-flex">
+        <i className="bi bi-hospital"></i>
         <p>{propertykitchen}</p>
       </div>
-      <div class="property-details d-flex">
-        <i class="bi bi-door-open"></i>
+      <div className="property-details d-flex">
+        <i className="bi bi-door-open"></i>
         <p>{propertybathrooms}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const PropertyDetails = ({ detailstitle, detailstext }) => {
   return (
@@ -47,33 +41,33 @@ export const PropertyDetails = ({ detailstitle, detailstext }) => {
           </div>
         </div>
         <div className="media-body p-2 mt-2">
-          <i class="bi bi-geo-alt icon"></i>
+          <i className="bi bi-geo-alt icon"></i>
           <h5>{detailstitle}</h5>
           <p>{detailstext}</p>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const ShowListProperty = () => {
-  const { id } = useParams();
-  const property = useProperty(id);
+  const { id } = useParams()
+  const property = useProperty(id)
 
   if (!property) {
-    return null;
+    return null
   }
 
   return (
     <>
       <NavDefaultLayout>
-        <div className="single-page-property">
+        <div classNameName="single-page-property">
           <div
             id="carouselExampleCaptions"
-            class="carousel slide carousel-image"
+            className="carousel slide carousel-image"
             data-bs-ride="carousel"
           >
-            <div class="carousel-indicators">
+            <div className="carousel-indicators">
               {property.images.map((image, i) => {
                 return (
                   <button
@@ -81,76 +75,53 @@ const ShowListProperty = () => {
                     type="button"
                     data-bs-target="#carouselExampleCaptions"
                     data-bs-slide-to={i}
-                    class={i === 0 ? "active" : ""}
-                    aria-current={i === 0 ? "true" : "false"}
+                    className={i === 0 ? 'active' : ''}
+                    aria-current={i === 0 ? 'true' : 'false'}
                     aria-label={`Slide ${i + 1}`}
                   ></button>
-                );
+                )
               })}
-              {/* <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="2"
-                aria-label="Slide 3"
-              ></button> */}
             </div>
-            <div class="carousel-inner">
+            <div className="carousel-inner">
               {property.images.map((image, i) => {
                 return (
                   <div
-                    class={`carousel-item${i === 0 ? " active" : ""}`}
+                    className={`carousel-item${i === 0 ? ' active' : ''}`}
                     key={image.filename}
                   >
                     <img
                       src={image.path}
-                      class="d-block w-100
+                      className="d-block w-100
                         carousel-image"
                       alt="..."
                     />
                   </div>
-                );
+                )
               })}
-              {/* <div class="carousel-item">
-                <img src={SingleBedroom} class="d-block w-100" alt="..." />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src={SingleBathroom}
-                  class="d-block w-100
-                        center"
-                  alt="..."
-                />
-              </div> */}
             </div>
             <button
-              class="carousel-control-prev"
+              className="carousel-control-prev"
               type="button"
               data-bs-target="#carouselExampleCaptions"
               data-bs-slide="prev"
             >
               <span
-                class="carousel-control-prev-icon"
+                className="carousel-control-prev-icon"
                 aria-hidden="true"
               ></span>
-              <span class="visually-hidden">Previous</span>
+              <span className="visually-hidden">Previous</span>
             </button>
             <button
-              class="carousel-control-next"
+              className="carousel-control-next"
               type="button"
               data-bs-target="#carouselExampleCaptions"
               data-bs-slide="next"
             >
               <span
-                class="carousel-control-next-icon"
+                className="carousel-control-next-icon"
                 aria-hidden="true"
               ></span>
-              <span class="visually-hidden">Next</span>
+              <span className="visually-hidden">Next</span>
             </button>
           </div>
           <div className="row d-flex">
@@ -181,16 +152,15 @@ const ShowListProperty = () => {
           </div>
 
           <div className="single-page-property__description">
-            <div class="single-page-property__description-details">
-              <div class="row single-property-section">
-                <div class="col-lg-12 py-5 single-property-condition">
+            <div className="single-page-property__description-details">
+              <div className="row single-property-section">
+                <div className="col-lg-12 py-5 single-property-condition">
                   <h6>Conditions</h6>
                   <h4>
                     {property.bedroom} bedroom {property.type}
                   </h4>
                   <p className="">{property.description}</p>
                   <PropertyConditions
-                    propertygarage={`Garage ${property.garage || "nill"}`}
                     propertyfeet={`${property.sittingRoom} sittingRooms`}
                     propertybedroom={`${property.bedroom} bedrooms`}
                     propertykitchen={`${property.kitchen} Kitchens`}
@@ -203,7 +173,7 @@ const ShowListProperty = () => {
         </div>
       </NavDefaultLayout>
     </>
-  );
-};
+  )
+}
 
-export default ShowListProperty;
+export default ShowListProperty

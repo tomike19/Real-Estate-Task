@@ -203,11 +203,11 @@ const AddProperty = ({ error }) => {
                         />
                       </div>
                     )}
-                    <div class="col-lg-12 col-12 mt-5">
-                      <div class="form-floating">
+                    <div className="col-lg-12 col-12 mt-5">
+                      <div className="form-floating">
                         <textarea
                           name="description"
-                          class="form-control
+                          className="form-control
                     mb-5"
                           type="text"
                           placeholder="Leave a
@@ -223,15 +223,15 @@ const AddProperty = ({ error }) => {
                     </div>
                     {!values._id && (
                       <div
-                        class="add-property-box
+                        className="add-property-box
               step-3 input-file"
                       >
-                        <div class="input-file">
-                          <label for="" className="input-label">
+                        <div className="input-file">
+                          <label htmlFor="" className="input-label">
                             Upload Property Images
                           </label>
                           <input
-                            class="form-control
+                            className="form-control
                   form-control-lg"
                             id="formFileLg"
                             type="file"
@@ -249,7 +249,6 @@ const AddProperty = ({ error }) => {
                   <div className="add-property__footer">
                     <BtnLarge
                       type="submit"
-                      //  to={RouteLinks.login}
                       label={values._id ? "Update Property" : "Add Property"}
                     />
                   </div>

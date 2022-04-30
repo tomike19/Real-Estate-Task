@@ -17,33 +17,33 @@ export const ListProperty = ({
         <img src={image} alt="cardimage" className="card-image" />
         <div className="card-body">
           <h6>{propertytitle}</h6>
-          <div class="property-details d-flex">
-            <i class="bi bi-geo-alt"></i>
+          <div className="property-details d-flex">
+            <i className="bi bi-geo-alt"></i>
             <p>{propertylocation}</p>
           </div>
           <div></div>
           <div
-            class="property-details-image d-flex
+            className="property-details-image d-flex
                 justify-content-between"
           >
             <p>
-              <i class="bi bi-arrow-down-circle"></i>
+              <i className="bi bi-arrow-down-circle"></i>
               {propertybedroom}
               <p>Bedroom</p>
             </p>
             <p>
-              <i class="bi bi-bookmark-plus"></i>
+              <i className="bi bi-bookmark-plus"></i>
               {propertytoilet}
               <p>Toilets</p>
             </p>
             <Link to={`/${propertyId}`}>
-              <button type="button" class="list-property__viewMore">
+              <button type="button" className="list-property__viewMore">
                 View More
               </button>
             </Link>
             
-            <Link to={`?edit${propertyId}`}>
-              <button type="button" class="list-property__viewMore">
+            <Link to="">
+              <button type="button" className="list-property__viewMore">
                 Update
               </button>
             </Link>
@@ -76,12 +76,12 @@ const ListPropertyPage = () => {
                       value="Find a property by address"
                       id="example-search-input"
                     />
-                    <span class="input-group-append">
+                    <span className="input-group-append">
                       <button
                         class="btn btn-outline- list-property__button bg-white ms-n5 mt-2"
                         type="button"
                       >
-                        <i class="bi bi-search pt-3"></i>
+                        <i className="bi bi-search pt-3"></i>
                       </button>
                     </span>
                   </div>
@@ -90,7 +90,7 @@ const ListPropertyPage = () => {
               <div className="col-md-6 col-lg-6 col-12 mt-5">
                 <div className="input-wrap d-flex flex-column filter-select">
                   <select
-                    class="form-select input"
+                    className="form-select input"
                     name="property-type"
                     type="text"
                     aria-label="Default                                                      select example"
