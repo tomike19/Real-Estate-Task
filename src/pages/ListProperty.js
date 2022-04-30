@@ -15,7 +15,7 @@ export const ListProperty = ({
   return (
     <div className="list-property__properties">
       <div className="card">
-        <img src={image} alt="card-image" />
+        <img src={image} alt="card-image"  className='card-image'/>
         <div className="card-body">
           <h6>{propertytitle}</h6>
           <div class="property-details d-flex">
