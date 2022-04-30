@@ -44,7 +44,7 @@ export const ListProperty = ({
             </button>
           </Link>
 
-          <Link to={`/?edit${propertyId}`}>
+          <Link to={`/?edit=${propertyId}`}>
             <button type="button" className="list-property__viewMore">
               Update
             </button>
