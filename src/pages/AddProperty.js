@@ -214,9 +214,7 @@ const AddProperty = ({ error }) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.description}
-                        >
-                        
-                        </textarea>
+                        ></textarea>
                         <label htmlFor="floatingTextarea">Description</label>
                       </div>
                     </div>
@@ -234,6 +232,8 @@ const AddProperty = ({ error }) => {
                   form-control-lg"
                             id="formFileLg"
                             type="file"
+                            multiple
+                            accept="image"
                             onChange={(event) => {
                               const [file] = event.target.files
                               setFile(file)

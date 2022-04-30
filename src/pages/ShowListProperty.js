@@ -3,7 +3,6 @@ import { useParams } from 'react-router'
 import { useProperty } from '../hooks/use-property'
 
 export const PropertyConditions = ({
-  propertygarage,
   propertybedroom,
   propertyfeet,
   propertykitchen,
