@@ -24,6 +24,7 @@
         border: none;
         color: white;
         border-radius: 4px;
+        height: 35px;
     }
     .input-group {
         border: 1px solid #ccc;
@@ -48,7 +49,7 @@
         }
     }
     .card {
-        max-width: 1170px;
+        max-width: 1200px;
     height: 100%;
     margin-top: 20px;
     }
@@ -71,6 +72,6 @@
     }
 }
 
-.ms-n5 {
-    margin-left: -40px;
-}
+// .ms-n5 {
+//     margin-left: -40px;
+// }

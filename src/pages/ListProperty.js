@@ -1,8 +1,7 @@
 import NavDefaultLayout from '../layouts/NavDefaultLayout'
-import { useProperties } from "../hooks/use-properties";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { useProperties } from '../hooks/use-properties'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export const ListProperty = ({
   image,
@@ -15,7 +14,7 @@ export const ListProperty = ({
   return (
     <div className="list-property__properties">
       <div className="card">
-        <img src={image} alt="card-image"  className='card-image'/>
+        <img src={image} alt="cardimage" className="card-image" />
         <div className="card-body">
           <h6>{propertytitle}</h6>
           <div class="property-details d-flex">
@@ -30,14 +29,22 @@ export const ListProperty = ({
             <p>
               <i class="bi bi-arrow-down-circle"></i>
               {propertybedroom}
+              <p>Bedroom</p>
             </p>
             <p>
               <i class="bi bi-bookmark-plus"></i>
               {propertytoilet}
+              <p>Toilets</p>
             </p>
             <Link to={`/${propertyId}`}>
               <button type="button" class="list-property__viewMore">
                 View More
+              </button>
+            </Link>
+            
+            <Link to={`?edit${propertyId}`}>
+              <button type="button" class="list-property__viewMore">
+                Update
               </button>
             </Link>
           </div>
@@ -48,9 +55,9 @@ export const ListProperty = ({
 }
 
 const ListPropertyPage = () => {
-    // add bedroom, kitchen and owner filter here
-  const [params] = useState({});
-  const properties = useProperties(params);
+  // add bedroom, kitchen and owner filter here
+  const [params] = useState({})
+  const properties = useProperties(params)
   return (
     <>
       <NavDefaultLayout>
@@ -102,13 +109,13 @@ const ListPropertyPage = () => {
             <div className="list-property__properties-details">
               <div className="row">
                 {properties.map((property) => {
-                  const [image] = property.images;
-                  const { bedroom, type } = property;
+                  const [image] = property.images
+                  const { bedroom, type } = property
 
                   return (
                     <div className="col-lg-4" key={property._id}>
                       <ListProperty
-                        image={(image && image.path) || "/images/property3.jpg"}
+                        image={(image && image.path) || '/images/property3.jpg'}
                         propertytitle={`${bedroom} bedroom ${type}`}
                         propertylocation={property.address}
                         propertybedroom={bedroom}
@@ -116,9 +123,8 @@ const ListPropertyPage = () => {
                         propertyId={property._id}
                       />
                     </div>
-                  );
+                  )
                 })}
-               
               </div>
             </div>
           </div>

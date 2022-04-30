@@ -1,8 +1,8 @@
-import React from 'react'
-import NavDefaultLayout from '../layouts/NavDefaultLayout'
-import SingleKitchen from '../assets/images/singlekitchen.jpg'
-import SingleBedroom from '../assets/images/singlebedroom.jpg'
-import SingleBathroom from '../assets/images/heroimage.jpg'
+import React from "react";
+import NavDefaultLayout from "../layouts/NavDefaultLayout";
+
+import { useParams } from "react-router";
+import { useProperty } from "../hooks/use-property";
 
 export const PropertyConditions = ({
   propertygarage,
@@ -10,9 +10,6 @@ export const PropertyConditions = ({
   propertyfeet,
   propertykitchen,
   propertybathrooms,
-  propertyowner,
-  validFrom,
-  validTo,
 }) => {
   return (
     <div className="single-page-property__property-items">
@@ -36,21 +33,9 @@ export const PropertyConditions = ({
         <i class="bi bi-door-open"></i>
         <p>{propertybathrooms}</p>
       </div>
-       <div class="property-details d-flex">
-        <i class="bi bi-door-open"></i>
-        <p>{propertyowner}</p>
-      </div>
-      <div class="property-details d-flex">
-        <i class="bi bi-door-open"></i>
-        <p>{validFrom}</p>
-      </div>
-        <div class="property-details d-flex">
-        <i class="bi bi-hospital"></i>
-        <p>{validTo}</p>
-      </div>
     </div>
-  )
-}
+  );
+};
 
 export const PropertyDetails = ({ detailstitle, detailstext }) => {
   return (
@@ -68,9 +53,17 @@ export const PropertyDetails = ({ detailstitle, detailstext }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
 const ShowListProperty = () => {
+  const { id } = useParams();
+  const property = useProperty(id);
+
+  if (!property) {
+    return null;
+  }
+
   return (
     <>
       <NavDefaultLayout>
@@ -81,15 +74,20 @@ const ShowListProperty = () => {
             data-bs-ride="carousel"
           >
             <div class="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                aria-label="Slide 1"
-              ></button>
-              <button
+              {property.images.map((image, i) => {
+                return (
+                  <button
+                    key={image.path}
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide-to={i}
+                    class={i === 0 ? "active" : ""}
+                    aria-current={i === 0 ? "true" : "false"}
+                    aria-label={`Slide ${i + 1}`}
+                  ></button>
+                );
+              })}
+              {/* <button
                 type="button"
                 data-bs-target="#carouselExampleCaptions"
                 data-bs-slide-to="1"
@@ -100,18 +98,25 @@ const ShowListProperty = () => {
                 data-bs-target="#carouselExampleCaptions"
                 data-bs-slide-to="2"
                 aria-label="Slide 3"
-              ></button>
+              ></button> */}
             </div>
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  src={SingleKitchen}
-                  class="d-block w-100
+              {property.images.map((image, i) => {
+                return (
+                  <div
+                    class={`carousel-item${i === 0 ? " active" : ""}`}
+                    key={image.filename}
+                  >
+                    <img
+                      src={image.path}
+                      class="d-block w-100
                         carousel-image"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
+                      alt="..."
+                    />
+                  </div>
+                );
+              })}
+              {/* <div class="carousel-item">
                 <img src={SingleBedroom} class="d-block w-100" alt="..." />
               </div>
               <div class="carousel-item">
@@ -121,7 +126,7 @@ const ShowListProperty = () => {
                         center"
                   alt="..."
                 />
-              </div>
+              </div> */}
             </div>
             <button
               class="carousel-control-prev"
@@ -180,22 +185,16 @@ const ShowListProperty = () => {
               <div class="row single-property-section">
                 <div class="col-lg-12 py-5 single-property-condition">
                   <h6>Conditions</h6>
-                  <h4>Name of the Property</h4>
-                  <p className=''>
-                    Haven ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et lore magna iqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut quipx ea codo consequat.
-                  </p>
+                  <h4>
+                    {property.bedroom} bedroom {property.type}
+                  </h4>
+                  <p className="">{property.description}</p>
                   <PropertyConditions
-                    propertygarage=" Lagos"
-                    propertyfeet="5 sittingRooms"
-                    propertybedroom="3 bedrooms"
-                    propertykitchen="4 Kitchens"
-                    propertybathrooms="5 bathrooms"
-                    propertyowner="TOMIKE"
-                    validFrom="20/10/20"
-                    validTo="20/10/20"
+                    propertygarage={`Garage ${property.garage || "nill"}`}
+                    propertyfeet={`${property.sittingRoom} sittingRooms`}
+                    propertybedroom={`${property.bedroom} bedrooms`}
+                    propertykitchen={`${property.kitchen} Kitchens`}
+                    propertybathrooms={`${property.bathroom} bathrooms`}
                   />
                 </div>
               </div>
@@ -204,7 +203,7 @@ const ShowListProperty = () => {
         </div>
       </NavDefaultLayout>
     </>
-  )
-}
+  );
+};
 
-export default ShowListProperty
+export default ShowListProperty;
