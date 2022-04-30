@@ -1,11 +1,22 @@
-import React from 'react'
-import NavDefaultLayout from '../layouts/NavDefaultLayout'
-import { Input } from './../components/input/Input'
-import { BtnLarge } from './../components/button/button'
-import { Formik } from 'formik'
-import inputValueValidationSchema from '../helpers/ValidationSchema'
+import React, { useState } from "react";
+import NavDefaultLayout from "../layouts/NavDefaultLayout";
+import { Input } from "./../components/input/Input";
+import { BtnLarge } from "./../components/button/button";
+import { Formik } from "formik";
+import inputValueValidationSchema, {
+  updateValueValidationSchema,
+} from "../helpers/ValidationSchema";
+import pick from "lodash.pick";
+import { useQuery } from "../hooks/use-query";
+import { useAddPropertyLogic } from "../hooks/use-add-property-logic";
+import { useProperty } from "../hooks/use-property";
 
 const AddProperty = ({ error }) => {
+  const [file, setFile] = useState(null);
+  const [handleSubmit] = useAddPropertyLogic(file);
+  const { edit } = useQuery();
+  const property = useProperty(edit);
+
   return (
     <>
       <NavDefaultLayout>
@@ -14,18 +25,39 @@ const AddProperty = ({ error }) => {
             <h1>Add Property Information</h1>
           </div>
           <Formik
-            initialValues={{
-              propertyAddress: '',
-              propertyType: '',
-              numberOfBathrooms: '',
-              numberOfKitchens: '',
-              numberOfToilets: '',
-              numberOfSittingrooms: '',
-              propertyOwner: '',
-              validFrom: '',
-              validTo: '',
-            }}
-            validationSchema={inputValueValidationSchema}
+            key={JSON.stringify(property)}
+            initialValues={
+              property
+                ? pick(property, [
+                    "_id",
+                    "bedroom",
+                    "sittingRoom",
+                    "kitchen",
+                    "bathroom",
+                    "toilet",
+                    "description",
+                  ])
+                : {
+                    address: "",
+                    type: "",
+                    bedroom: "",
+                    sittingRoom: "",
+                    kitchen: "",
+                    bathroom: "",
+                    toilet: "",
+                    propertyOwner: "",
+                    description: "",
+                    validFrom: "",
+                    validTo: "",
+                    images: [],
+                  }
+            }
+            validationSchema={
+              property
+                ? updateValueValidationSchema
+                : inputValueValidationSchema
+            }
+            onSubmit={handleSubmit}
           >
             {(props) => {
               const {
@@ -33,46 +65,50 @@ const AddProperty = ({ error }) => {
                 handleChange,
                 errors,
                 touched,
+                values,
                 handleBlur,
-              } = props
+              } = props;
               return (
                 <form onSubmit={handleSubmit}>
                   <div className="row">
-                    <div className="col-md-6 col-lg-6 col-12">
-                      <Input
-                        label="Property Address"
-                        placeholder="Enter your address"
-                        type="text"
-                        name="propertyAddress"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={
-                          touched.propertyAddress && errors.propertyAddress
-                        }
-                      />
-                    </div>
-                    <div className="col-md-6 col-lg-6 col-12">
-                      <Input
-                        label="Property Type"
-                        placeholder="Property Type"
-                        type="text"
-                        name="Property Type"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={touched.propertyType && errors.propertyType}
-                      />
-                    </div>
+                    {!values._id && (
+                      <div className="col-md-6 col-lg-6 col-12">
+                        <Input
+                          label="Property Address"
+                          placeholder="Enter your address"
+                          type="text"
+                          name="address"
+                          value={values.address}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.address && errors.address}
+                        />
+                      </div>
+                    )}
+                    {!values._id && (
+                      <div className="col-md-6 col-lg-6 col-12">
+                        <Input
+                          label="Property Type"
+                          placeholder="Property Type"
+                          type="text"
+                          name="type"
+                          value={values.type}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.type && errors.type}
+                        />
+                      </div>
+                    )}
                     <div className="col-md-6 col-lg-6 col-12">
                       <Input
                         label=" Number of Bathrooms"
                         placeholder="Number of Bathrooms"
                         type="text"
-                        name=" Number of Bathrooms"
+                        value={values.bathroom}
+                        name="bathroom"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        error={
-                          touched.numberOfBathrooms && errors.numberOfBathrooms
-                        }
+                        error={touched.bathroom && errors.bathroom}
                       />
                     </div>
                     <div className="col-md-6 col-lg-6 col-12">
@@ -80,12 +116,11 @@ const AddProperty = ({ error }) => {
                         label=" Number of Kitchens"
                         placeholder="Number of Kitchens"
                         type="text"
-                        name=" Number of Kitchens"
+                        name="kitchen"
+                        value={values.kitchen}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        error={
-                          touched.numberOfKitchens && errors.numberOfKitchens
-                        }
+                        error={touched.kitchen && errors.kitchen}
                       />
                     </div>
                     <div className="col-md-6 col-lg-6 col-12">
@@ -93,12 +128,11 @@ const AddProperty = ({ error }) => {
                         label=" Number of Toilets"
                         placeholder="Number of Toilets"
                         type="text"
-                        name=" Number of Toilets"
+                        name="toilet"
+                        value={values.toilet}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        error={
-                          touched.numberOfToilets && errors.numberOfToilets
-                        }
+                        error={touched.toilet && errors.toilet}
                       />
                     </div>
                     <div className="col-md-6 col-lg-6 col-12">
@@ -106,50 +140,69 @@ const AddProperty = ({ error }) => {
                         label=" Number of SittingRooms"
                         placeholder="Enter your Name"
                         type="text"
-                        name=" Number of SittingRooms"
+                        value={values.sittingRoom}
+                        name="sittingRoom"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        error={
-                          touched.numberOfSittingrooms &&
-                          errors.numberOfSittingrooms
-                        }
+                        error={touched.sittingRoom && errors.sittingRoom}
                       />
                     </div>
                     <div className="col-md-6 col-lg-6 col-12">
                       <Input
-                        label="property Owner"
-                        placeholder="Enter your Name"
+                        label=" Number of Bedrooms"
+                        placeholder=" Number of Bedrooms"
                         type="text"
-                        name="propertyOwner"
+                        name="bedroom"
+                        value={values.bedroom}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        error={touched.propertyOwner && errors.propertyOwner}
+                        error={touched.bedroom && errors.bedroom}
                       />
                     </div>
-                    <div className="col-md-6 col-lg-6 col-12">
-                      <Input
-                        label="Valid From"
-                        id="valid to"
-                        name="validFrom"
-                        placeholder="dd-mm-yyyy"
-                        type="date"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={touched.validFrom && errors.validFrom}
-                      />
-                    </div>
-                    <div className="col-md-6 col-lg-6 col-12">
-                      <Input
-                        label="Valid To"
-                        id="valid to"
-                        name="validTo"
-                        placeholder="dd-mm-yyyy"
-                        type="date"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={touched.validTo && errors.validTo}
-                      />
-                    </div>
+                    {!values._id && (
+                      <div className="col-md-6 col-lg-6 col-12">
+                        <Input
+                          label="property Owner"
+                          placeholder="Enter your Name"
+                          type="text"
+                          value={values.propertyOwner}
+                          name="propertyOwner"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.propertyOwner && errors.propertyOwner}
+                        />
+                      </div>
+                    )}
+                    {!values._id && (
+                      <div className="col-md-6 col-lg-6 col-12">
+                        <Input
+                          label="Valid From"
+                          id="valid to"
+                          name="validFrom"
+                          placeholder="dd-mm-yyyy"
+                          type="date"
+                          value={values.validFrom}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.validFrom && errors.validFrom}
+                        />
+                      </div>
+                    )}
+                    {!values._id && (
+                      <div className="col-md-6 col-lg-6 col-12">
+                        <Input
+                          label="Valid To"
+                          id="valid to"
+                          name="validTo"
+                          value={values.validTo}
+                          placeholder="dd-mm-yyyy"
+                          type="date"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.validTo && errors.validTo}
+                        />
+                      </div>
+                    )}
                     <div class="col-lg-12 col-12 mt-5">
                       <div class="form-floating">
                         <textarea
@@ -160,44 +213,274 @@ const AddProperty = ({ error }) => {
                           placeholder="Leave a
                    comment here"
                           id="floatingTextarea"
-                        ></textarea>
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        >
+                          {values.description}
+                        </textarea>
                         <label for="floatingTextarea">Description</label>
                       </div>
                     </div>
-                    <div
-                      class="add-property-box
+                    {!values._id && (
+                      <div
+                        class="add-property-box
               step-3 input-file"
-                    >
-                      <div class="input-file">
-                        <label for="" className="input-label">
-                          Upload Property Images
-                        </label>
-                        <input
-                          class="form-control
+                      >
+                        <div class="input-file">
+                          <label for="" className="input-label">
+                            Upload Property Images
+                          </label>
+                          <input
+                            class="form-control
                   form-control-lg"
-                          id="formFileLg"
-                          type="file"
-                          name="image"
-                        />
+                            id="formFileLg"
+                            type="file"
+                            onChange={(event) => {
+                              const [file] = event.target.files;
+                              setFile(file);
+                            }}
+                            name="image"
+                          />
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   <div className="add-property__footer">
                     <BtnLarge
                       type="submit"
                       //  to={RouteLinks.login}
-                      label="Add Property"
+                      label={values._id ? "Update Property" : "Add Property"}
                     />
                   </div>
                 </form>
-              )
+              );
             }}
           </Formik>
         </div>
       </NavDefaultLayout>
     </>
-  )
-}
+  );
+};
 
-export default AddProperty
+export default AddProperty;
+
+
+
+// import React from 'react'
+// import NavDefaultLayout from '../layouts/NavDefaultLayout'
+// import { Input } from './../components/input/Input'
+// import { BtnLarge } from './../components/button/button'
+// import { Formik } from 'formik'
+// import inputValueValidationSchema, {
+//   updateValueValidationSchema,
+// } from '../helpers/ValidationSchema'
+// import pick from "lodash.pick";
+// import { useQuery } from "../hooks/use-query";
+// import { useAddPropertyLogic } from "../hooks/use-add-property-logic";
+// import { useProperty } from "../hooks/use-property";
+
+
+// const AddProperty = ({ error }) => {
+//   const [file, setFile] = useState(null);
+//   const [handleSubmit] = useAddPropertyLogic(file);
+//   const { edit } = useQuery();
+//   const property = useProperty(edit);
+
+// const AddProperty = ({ error }) => {
+//   return (
+//     <>
+//       <NavDefaultLayout>
+//         <div className="add-property container">
+//           <div className="add-property__header">
+//             <h1>Add Property Information</h1>
+//           </div>
+//           <Formik
+//            key={JSON.stringify(property)}
+//             initialValues={{
+//               propertyAddress: '',
+//               propertyType: '',
+//               numberOfBathrooms: '',
+//               numberOfKitchens: '',
+//               numberOfToilets: '',
+//               numberOfSittingrooms: '',
+//               propertyOwner: '',
+//               validFrom: '',
+//               validTo: '',
+//             }}
+//             validationSchema={inputValueValidationSchema}
+//           >
+//             {(props) => {
+//               const {
+//                 handleSubmit,
+//                 handleChange,
+//                 errors,
+//                 touched,
+//                 handleBlur,
+//               } = props
+//               return (
+//                 <form onSubmit={handleSubmit}>
+//                   <div className="row">
+//                     <div className="col-md-6 col-lg-6 col-12">
+//                       <Input
+//                         label="Property Address"
+//                         placeholder="Enter your address"
+//                         type="text"
+//                         name="propertyAddress"
+//                         onChange={handleChange}
+//                         onBlur={handleBlur}
+//                         error={
+//                           touched.propertyAddress && errors.propertyAddress
+//                         }
+//                       />
+//                     </div>
+//                     <div className="col-md-6 col-lg-6 col-12">
+//                       <Input
+//                         label="Property Type"
+//                         placeholder="Property Type"
+//                         type="text"
+//                         name="Property Type"
+//                         onChange={handleChange}
+//                         onBlur={handleBlur}
+//                         error={touched.propertyType && errors.propertyType}
+//                       />
+//                     </div>
+//                     <div className="col-md-6 col-lg-6 col-12">
+//                       <Input
+//                         label=" Number of Bathrooms"
+//                         placeholder="Number of Bathrooms"
+//                         type="text"
+//                         name=" Number of Bathrooms"
+//                         onChange={handleChange}
+//                         onBlur={handleBlur}
+//                         error={
+//                           touched.numberOfBathrooms && errors.numberOfBathrooms
+//                         }
+//                       />
+//                     </div>
+//                     <div className="col-md-6 col-lg-6 col-12">
+//                       <Input
+//                         label=" Number of Kitchens"
+//                         placeholder="Number of Kitchens"
+//                         type="text"
+//                         name=" Number of Kitchens"
+//                         onChange={handleChange}
+//                         onBlur={handleBlur}
+//                         error={
+//                           touched.numberOfKitchens && errors.numberOfKitchens
+//                         }
+//                       />
+//                     </div>
+//                     <div className="col-md-6 col-lg-6 col-12">
+//                       <Input
+//                         label=" Number of Toilets"
+//                         placeholder="Number of Toilets"
+//                         type="text"
+//                         name=" Number of Toilets"
+//                         onChange={handleChange}
+//                         onBlur={handleBlur}
+//                         error={
+//                           touched.numberOfToilets && errors.numberOfToilets
+//                         }
+//                       />
+//                     </div>
+//                     <div className="col-md-6 col-lg-6 col-12">
+//                       <Input
+//                         label=" Number of SittingRooms"
+//                         placeholder="Enter your Name"
+//                         type="text"
+//                         name=" Number of SittingRooms"
+//                         onChange={handleChange}
+//                         onBlur={handleBlur}
+//                         error={
+//                           touched.numberOfSittingrooms &&
+//                           errors.numberOfSittingrooms
+//                         }
+//                       />
+//                     </div>
+//                     <div className="col-md-6 col-lg-6 col-12">
+//                       <Input
+//                         label="property Owner"
+//                         placeholder="Enter your Name"
+//                         type="text"
+//                         name="propertyOwner"
+//                         onChange={handleChange}
+//                         onBlur={handleBlur}
+//                         error={touched.propertyOwner && errors.propertyOwner}
+//                       />
+//                     </div>
+//                     <div className="col-md-6 col-lg-6 col-12">
+//                       <Input
+//                         label="Valid From"
+//                         id="valid to"
+//                         name="validFrom"
+//                         placeholder="dd-mm-yyyy"
+//                         type="date"
+//                         onChange={handleChange}
+//                         onBlur={handleBlur}
+//                         error={touched.validFrom && errors.validFrom}
+//                       />
+//                     </div>
+//                     <div className="col-md-6 col-lg-6 col-12">
+//                       <Input
+//                         label="Valid To"
+//                         id="valid to"
+//                         name="validTo"
+//                         placeholder="dd-mm-yyyy"
+//                         type="date"
+//                         onChange={handleChange}
+//                         onBlur={handleBlur}
+//                         error={touched.validTo && errors.validTo}
+//                       />
+//                     </div>
+//                     <div class="col-lg-12 col-12 mt-5">
+//                       <div class="form-floating">
+//                         <textarea
+//                           name="description"
+//                           class="form-control
+//                     mb-5"
+//                           type="text"
+//                           placeholder="Leave a
+//                    comment here"
+//                           id="floatingTextarea"
+//                         ></textarea>
+//                         <label for="floatingTextarea">Description</label>
+//                       </div>
+//                     </div>
+//                     <div
+//                       class="add-property-box
+//               step-3 input-file"
+//                     >
+//                       <div class="input-file">
+//                         <label for="" className="input-label">
+//                           Upload Property Images
+//                         </label>
+//                         <input
+//                           class="form-control
+//                   form-control-lg"
+//                           id="formFileLg"
+//                           type="file"
+//                           name="image"
+//                         />
+//                       </div>
+//                     </div>
+//                   </div>
+
+//                   <div className="add-property__footer">
+//                     <BtnLarge
+//                       type="submit"
+//                       //  to={RouteLinks.login}
+//                       label="Add Property"
+//                     />
+//                   </div>
+//                 </form>
+//               )
+//             }}
+//           </Formik>
+//         </div>
+//       </NavDefaultLayout>
+//     </>
+//   )
+// }
+
+// export default AddProperty
