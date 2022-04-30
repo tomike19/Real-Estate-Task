@@ -10,19 +10,19 @@ export const PropertyConditions = ({
 }) => {
   return (
     <div className="single-page-property__property-items">
-      <div className="property-details d-flex">
+      <div className="property-items__property-details d-flex">
         <i className="bi bi-geo-alt"></i>
         <p>{propertybedroom}</p>
       </div>
-      <div className="property-details d-flex">
+      <div className="property-items__property-details d-flex">
         <i className="bi bi-building"></i>
         <p>{propertyfeet}</p>
       </div>
-      <div className="property-details d-flex">
+      <div className="property-items__property-details d-flex">
         <i className="bi bi-hospital"></i>
         <p>{propertykitchen}</p>
       </div>
-      <div className="property-details d-flex">
+      <div className="property-items__property-details d-flex">
         <i className="bi bi-door-open"></i>
         <p>{propertybathrooms}</p>
       </div>
@@ -158,7 +158,7 @@ const ShowListProperty = () => {
                   <h4>
                     {property.bedroom} bedroom {property.type}
                   </h4>
-                  <p className="">{property.description}</p>
+                  <p className="single-page-property__description-details">{property.description}</p>
                   <PropertyConditions
                     propertyfeet={`${property.sittingRoom} sittingRooms`}
                     propertybedroom={`${property.bedroom} bedrooms`}

@@ -229,7 +229,7 @@ const AddProperty = ({ error }) => {
                           </label>
                           <input
                             className="form-control
-                  form-control-lg"
+                             form-control-lg"
                             id="formFileLg"
                             type="file"
                             multiple
