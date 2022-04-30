@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import NavDefaultLayout from '../layouts/NavDefaultLayout'
 import { useProperties } from '../hooks/use-properties'
 import { useState } from 'react'
@@ -36,18 +37,18 @@ export const ListProperty = ({
               {propertytoilet}
               <p>Toilets</p>
             </p>
-            <Link to={`/${propertyId}`}>
-              <button type="button" className="list-property__viewMore">
-                View More
-              </button>
-            </Link>
-
-            <Link to="">
-              <button type="button" className="list-property__viewMore">
-                Update
-              </button>
-            </Link>
           </div>
+          <Link to={`/${propertyId}`}>
+            <button type="button" className="list-property__viewMore ml-5">
+              View More
+            </button>
+          </Link>
+
+          <Link to={`/?edit${propertyId}`}>
+            <button type="button" className="list-property__viewMore">
+              Update
+            </button>
+          </Link>
         </div>
       </div>
     </div>

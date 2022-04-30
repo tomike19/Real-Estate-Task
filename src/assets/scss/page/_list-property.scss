@@ -25,6 +25,7 @@
         color: white;
         border-radius: 4px;
         height: 35px;
+        margin-left: 10px;
     }
     .input-group {
         border: 1px solid #ccc;
@@ -66,8 +67,6 @@
         color: white;
     }
     .card-inner {
-        // display: flex;
-        // justify-content: space-between;
         transition: all 0.5s ease 0s;
     }
 }
