@@ -1,4 +1,8 @@
 import NavDefaultLayout from '../layouts/NavDefaultLayout'
+import { useProperties } from "../hooks/use-properties";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 export const ListProperty = ({
   image,
@@ -6,6 +10,7 @@ export const ListProperty = ({
   propertylocation,
   propertybedroom,
   propertytoilet,
+  propertyId,
 }) => {
   return (
     <div className="list-property__properties">
@@ -30,9 +35,11 @@ export const ListProperty = ({
               <i class="bi bi-bookmark-plus"></i>
               {propertytoilet}
             </p>
-            <button type="button" class="list-property__viewMore">
-              View More
-            </button>
+            <Link to={`/${propertyId}`}>
+              <button type="button" class="list-property__viewMore">
+                View More
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -41,6 +48,9 @@ export const ListProperty = ({
 }
 
 const ListPropertyPage = () => {
+    // add bedroom, kitchen and owner filter here
+  const [params] = useState({});
+  const properties = useProperties(params);
   return (
     <>
       <NavDefaultLayout>
@@ -91,51 +101,24 @@ const ListPropertyPage = () => {
             <h1>FEATURED PROPERTY</h1>
             <div className="list-property__properties-details">
               <div className="row">
-                <div className="col-lg-4">
-                  <ListProperty
-                    image="/images/property3.jpg"
-                    propertytitle="Friuli-Venezia Giulia"
-                    propertylocation=" 568 E 1st Ave,Miami"
-                    propertybedroom="Bedroom"
-                    propertytoilet="Toilet"
-                  />
-                </div>
-                <div className="col-lg-4">
-                  <ListProperty
-                    image="/images/property3.jpg"
-                    propertytitle="Friuli-Venezia Giulia"
-                    propertylocation=" 5Bedrrom8 E 1st Ave,Miami"
-                    propertybedroom="Kitchen"
-                    propertytoilet="Sittingroom"
-                  />
-                </div>
-                <div className="col-lg-4">
-                  <ListProperty
-                    image="/images/property3.jpg"
-                    propertytitle="Friuli-Venezia Giulia"
-                    propertylocation=" 5Bedrrom8 E 1st Ave,Miami"
-                    propertybedroom="Bedroom"
-                    propertytoilet="Toilet"
-                  />
-                </div>
-                <div className="col-lg-4 mt-5">
-                  <ListProperty
-                    image="/images/property3.jpg"
-                    propertytitle="Friuli-Venezia Giulia"
-                    propertylocation=" 5Bedrrom8 E 1st Ave,Miami"
-                    propertybedroom="Kitchen"
-                    propertytoilet="Sittingroom"
-                  />
-                </div>
-                <div className="col-lg-4 mt-5">
-                  <ListProperty
-                    image="/images/property3.jpg"
-                    propertytitle="Friuli-Venezia Giulia"
-                    propertylocation=" 5Bedrrom8 E 1st Ave,Miami"
-                    propertybedroom="Bedroom"
-                    propertytoilet="Toilet"
-                  />
-                </div>
+                {properties.map((property) => {
+                  const [image] = property.images;
+                  const { bedroom, type } = property;
+
+                  return (
+                    <div className="col-lg-4" key={property._id}>
+                      <ListProperty
+                        image={(image && image.path) || "/images/property3.jpg"}
+                        propertytitle={`${bedroom} bedroom ${type}`}
+                        propertylocation={property.address}
+                        propertybedroom={bedroom}
+                        propertytoilet={property.toilet}
+                        propertyId={property._id}
+                      />
+                    </div>
+                  );
+                })}
+               
               </div>
             </div>
           </div>

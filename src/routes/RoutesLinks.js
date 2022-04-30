@@ -1,6 +1,6 @@
 export const RouteLinks = {
   addproperty: "/",
-  showlistproperty: "/showlistproperty",
+  showlistproperty: "/:id",
   listproperty: "/listproperty",
  
 };

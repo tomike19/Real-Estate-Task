@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-const inputValueValidationSchema = Yup.object().shape({
+const ValidationSchema = Yup.object().shape({
   address: Yup.string().required('Address is required'),
   type: Yup.string().required('Property type is required'),
   bedroom: Yup.string().required('Number of bedrooms is required'),
@@ -10,7 +10,7 @@ const inputValueValidationSchema = Yup.object().shape({
   sittingRoom: Yup.number().required(
     'Number of sitting rooms is required',
   ),
-  propertyOwner: Yup.number().required('Property Owner is required'),
+  propertyOwner: Yup.string().required('Property Owner is required'),
   validFrom: Yup.date().required('Enter a Valid date'),
   validTo: Yup.date().required('Enter a Valid date'),
 })
@@ -23,4 +23,4 @@ export const updateValueValidationSchema = Yup.object().shape({
   sittingRoom: Yup.number().required("Number of sitting rooms is required"),
 });
 
-export default inputValueValidationSchema
+export default ValidationSchema
