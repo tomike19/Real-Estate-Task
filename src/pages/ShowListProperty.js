@@ -61,7 +61,7 @@ const ShowListProperty = () => {
   return (
     <>
       <NavDefaultLayout>
-        <div classNameName="single-page-property">
+        <div className="single-page-property">
           <div
             id="carouselExampleCaptions"
             className="carousel slide carousel-image"

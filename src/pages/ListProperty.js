@@ -41,7 +41,7 @@ export const ListProperty = ({
                 View More
               </button>
             </Link>
-            
+
             <Link to="">
               <button type="button" className="list-property__viewMore">
                 Update
@@ -90,12 +90,13 @@ const ListPropertyPage = () => {
               <div className="col-md-6 col-lg-6 col-12 mt-5">
                 <div className="input-wrap d-flex flex-column filter-select">
                   <select
+                    defaultValue=""
                     className="form-select input"
                     name="property-type"
                     type="text"
                     aria-label="Default                                                      select example"
                   >
-                    <option selected>Filtered by</option>
+                    <option value="">Filtered by</option>
                     <option>Bathrooms</option>
                     <option>Bedrooms</option>
                     <option>Owners</option>

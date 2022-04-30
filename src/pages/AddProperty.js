@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import NavDefaultLayout from "../layouts/NavDefaultLayout";
-import { Input } from "./../components/input/Input";
-import { BtnLarge } from "./../components/button/button";
-import { Formik } from "formik";
+import React, { useState } from 'react'
+import NavDefaultLayout from '../layouts/NavDefaultLayout'
+import { Input } from './../components/input/Input'
+import { BtnLarge } from './../components/button/button'
+import { Formik } from 'formik'
 import ValidationSchema, {
   updateValueValidationSchema,
-} from "../helpers/ValidationSchema";
-import pick from "lodash.pick";
-import { useQuery } from "../hooks/use-query";
-import { useAddPropertyLogic } from "../hooks/use-add-property-logic";
-import { useProperty } from "../hooks/use-property";
+} from '../helpers/ValidationSchema'
+import pick from 'lodash.pick'
+import { useQuery } from '../hooks/use-query'
+import { useAddPropertyLogic } from '../hooks/use-add-property-logic'
+import { useProperty } from '../hooks/use-property'
 
 const AddProperty = ({ error }) => {
-  const [file, setFile] = useState(null);
-  const [handleSubmit] = useAddPropertyLogic(file);
-  const { edit } = useQuery();
-  const property = useProperty(edit);
+  const [file, setFile] = useState(null)
+  const [handleSubmit] = useAddPropertyLogic(file)
+  const { edit } = useQuery()
+  const property = useProperty(edit)
 
   return (
     <>
@@ -29,33 +29,31 @@ const AddProperty = ({ error }) => {
             initialValues={
               property
                 ? pick(property, [
-                    "_id",
-                    "bedroom",
-                    "sittingRoom",
-                    "kitchen",
-                    "bathroom",
-                    "toilet",
-                    "description",
+                    '_id',
+                    'bedroom',
+                    'sittingRoom',
+                    'kitchen',
+                    'bathroom',
+                    'toilet',
+                    'description',
                   ])
                 : {
-                    address: "",
-                    type: "",
-                    bedroom: "",
-                    sittingRoom: "",
-                    kitchen: "",
-                    bathroom: "",
-                    toilet: "",
-                    propertyOwner: "",
-                    description: "",
-                    validFrom: "",
-                    validTo: "",
+                    address: '',
+                    type: '',
+                    bedroom: '',
+                    sittingRoom: '',
+                    kitchen: '',
+                    bathroom: '',
+                    toilet: '',
+                    propertyOwner: '',
+                    description: '',
+                    validFrom: '',
+                    validTo: '',
                     images: [],
                   }
             }
             validationSchema={
-              property
-                ? updateValueValidationSchema
-                : ValidationSchema
+              property ? updateValueValidationSchema : ValidationSchema
             }
             onSubmit={handleSubmit}
           >
@@ -67,7 +65,7 @@ const AddProperty = ({ error }) => {
                 touched,
                 values,
                 handleBlur,
-              } = props;
+              } = props
               return (
                 <form onSubmit={handleSubmit}>
                   <div className="row">
@@ -215,10 +213,11 @@ const AddProperty = ({ error }) => {
                           id="floatingTextarea"
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          value={values.description}
                         >
-                          {values.description}
+                        
                         </textarea>
-                        <label for="floatingTextarea">Description</label>
+                        <label htmlFor="floatingTextarea">Description</label>
                       </div>
                     </div>
                     {!values._id && (
@@ -236,8 +235,8 @@ const AddProperty = ({ error }) => {
                             id="formFileLg"
                             type="file"
                             onChange={(event) => {
-                              const [file] = event.target.files;
-                              setFile(file);
+                              const [file] = event.target.files
+                              setFile(file)
                             }}
                             name="image"
                           />
@@ -249,20 +248,17 @@ const AddProperty = ({ error }) => {
                   <div className="add-property__footer">
                     <BtnLarge
                       type="submit"
-                      label={values._id ? "Update Property" : "Add Property"}
+                      label={values._id ? 'Update Property' : 'Add Property'}
                     />
                   </div>
                 </form>
-              );
+              )
             }}
           </Formik>
         </div>
       </NavDefaultLayout>
     </>
-  );
-};
+  )
+}
 
-export default AddProperty;
-
-
-
+export default AddProperty
