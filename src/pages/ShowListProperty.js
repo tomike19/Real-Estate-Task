@@ -3,13 +3,24 @@ import { useParams } from 'react-router'
 import { useProperty } from '../hooks/use-property'
 
 export const PropertyConditions = ({
+  propertyowner,
+  propertyaddress,
   propertybedroom,
   propertyfeet,
   propertykitchen,
   propertybathrooms,
+  propertytype,
 }) => {
   return (
     <div className="single-page-property__property-items">
+      <div className="property-items__property-details d-flex">
+        <i className="bi bi-hospital"></i>
+        <p>{propertyowner}</p>
+      </div>
+      <div className="property-items__property-details d-flex">
+        <i className="bi bi-building"></i>
+        <p>{propertyaddress}</p>
+      </div>
       <div className="property-items__property-details d-flex">
         <i className="bi bi-geo-alt"></i>
         <p>{propertybedroom}</p>
@@ -25,6 +36,10 @@ export const PropertyConditions = ({
       <div className="property-items__property-details d-flex">
         <i className="bi bi-door-open"></i>
         <p>{propertybathrooms}</p>
+      </div>
+        <div className="property-items__property-details d-flex">
+        <i className="bi bi-door-open"></i>
+        <p>{propertytype}</p>
       </div>
     </div>
   )
@@ -158,12 +173,18 @@ const ShowListProperty = () => {
                   <h4>
                     {property.bedroom} bedroom {property.type}
                   </h4>
-                  <p className="single-page-property__description-details">{property.description}</p>
+                  <p className="single-page-property__description-details">
+                    {property.description}
+                  </p>
                   <PropertyConditions
+                    propertyowner={`${property.owner}`}
+                    propertyaddress={`${property.address}`}
                     propertyfeet={`${property.sittingRoom} sittingRooms`}
                     propertybedroom={`${property.bedroom} bedrooms`}
                     propertykitchen={`${property.kitchen} Kitchens`}
                     propertybathrooms={`${property.bathroom} bathrooms`}
+                    propertytype={`${property.propertytype}`}
+
                   />
                 </div>
               </div>
