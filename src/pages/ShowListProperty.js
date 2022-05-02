@@ -3,20 +3,16 @@ import { useParams } from 'react-router'
 import { useProperty } from '../hooks/use-property'
 
 export const PropertyConditions = ({
-  propertyowner,
   propertyaddress,
   propertybedroom,
   propertyfeet,
   propertykitchen,
   propertybathrooms,
   propertytype,
+  propertytoilet,
 }) => {
   return (
     <div className="single-page-property__property-items">
-      <div className="property-items__property-details d-flex">
-        <i className="bi bi-hospital"></i>
-        <p>{propertyowner}</p>
-      </div>
       <div className="property-items__property-details d-flex">
         <i className="bi bi-building"></i>
         <p>{propertyaddress}</p>
@@ -37,9 +33,13 @@ export const PropertyConditions = ({
         <i className="bi bi-door-open"></i>
         <p>{propertybathrooms}</p>
       </div>
-        <div className="property-items__property-details d-flex">
+      <div className="property-items__property-details d-flex">
         <i className="bi bi-door-open"></i>
         <p>{propertytype}</p>
+      </div>
+      <div className="property-items__property-details d-flex">
+        <i className="bi bi-door-open"></i>
+        <p>{propertytoilet}</p>
       </div>
     </div>
   )
@@ -177,14 +177,13 @@ const ShowListProperty = () => {
                     {property.description}
                   </p>
                   <PropertyConditions
-                    propertyowner={`${property.owner}`}
                     propertyaddress={`${property.address}`}
                     propertyfeet={`${property.sittingRoom} sittingRooms`}
                     propertybedroom={`${property.bedroom} bedrooms`}
                     propertykitchen={`${property.kitchen} Kitchens`}
                     propertybathrooms={`${property.bathroom} bathrooms`}
-                    propertytype={`${property.propertytype}`}
-
+                    propertytype={`${property.type}`}
+                    propertytoilet={`${property.toilet} toilets`}
                   />
                 </div>
               </div>
